@@ -1,6 +1,7 @@
 ---
 - name: Install packages
   hosts: localhost
+  gather_facts: no # don't fetch host data
   connection: local
   tasks:
     - name: "Install openjdk-11"
@@ -8,3 +9,8 @@
         name: openjdk-11-jdk
         state: present # state: absent to uninstall the package
         update_cache: yes
+    - name: "Check installed java version"
+      command: java --version
+      register: java_version
+    - debug:
+        var: java_version.stdout_lines
