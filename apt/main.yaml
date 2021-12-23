@@ -1,0 +1,10 @@
+---
+- name: Install packages
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: "Install openjdk-11"
+      apt:
+        name: openjdk-11-jdk
+        state: present # state: absent to uninstall the package
+        update_cache: yes
