@@ -6,7 +6,9 @@
   tasks:
     - name: "Install openjdk-11 and maven"
       apt:
-        name: openjdk-11-jdk
+        pkg:
+          - openjdk-11-jdk
+          - maven
         state: present # state: absent to uninstall the package
         update_cache: yes
     - name: "Check installed java version"
@@ -14,6 +16,11 @@
       register: java_version
     - debug:
         var: java_version.stdout_lines
+    - name: "Check installed maven version"
+      command: mvn --version
+      register: mvn_version
+    - debug:
+        var: mvn_version.stdout_lines
     
     - name: "Install curl"
       apt: name=curl state=present
