@@ -4,7 +4,7 @@
   gather_facts: no # don't fetch host data
   connection: local
   tasks:
-    - name: "Install openjdk-11"
+    - name: "Install openjdk-11 and maven"
       apt:
         name: openjdk-11-jdk
         state: present # state: absent to uninstall the package
@@ -14,3 +14,6 @@
       register: java_version
     - debug:
         var: java_version.stdout_lines
+    
+    - name: "Install curl"
+      apt: name=curl state=present
