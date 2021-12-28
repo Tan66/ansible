@@ -30,4 +30,9 @@
           - containerd.io
         update_cache: yes
 
+    - name: "Installing docker-compose"
+      apt:
+        name: docker-compose
+        state: present
+
 # to start docker run docker_start.yaml playbook in service directory
