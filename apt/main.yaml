@@ -36,3 +36,6 @@
     
     - name: "Install terraform"
       include_tasks: install_terraform.yaml
+    
+    - name: "Install helm"
+      include_tasks: install_helm.yaml
