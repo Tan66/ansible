@@ -33,3 +33,6 @@
       apt:
         deb: https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
         state: present # deb only supports state=present
+    
+    - name: "Install terraform"
+      include_tasks: install_terraform.yaml
