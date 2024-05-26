@@ -1,0 +1,31 @@
+---
+- name: Install packages
+  hosts: localhost
+  gather_facts: yes
+  connection: local
+  tasks:
+  - name: "update apt cache i.e sudo apt update"
+    ansible.builtin.apt:
+      update_cache: yes
+    become: yes
+
+  - name: "installing cli tools"
+    ansible.builtin.apt:
+      pkg:
+      - tree
+
+  # - name: "install virtualbox, vagrant"
+  #   ansible.builtin.apt:
+  #     pkg:
+  #     - virtualbox
+  #     - virtualbox-dkms
+  #     - linux-headers-generic
+  #     - vagrant
+  #     state: absent
+  #   become: yes
+
+  # - name: "check virtualbox installation"
+  #   command: vboxmanage --version
+
+  # - name: "check vagrant installation"
+  #   command: vagrant --version
